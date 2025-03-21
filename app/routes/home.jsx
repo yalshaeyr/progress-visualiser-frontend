@@ -1,6 +1,4 @@
-import type { Route } from "./+types/home";
-
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [
     { title: "Progress Visualiser" },
     { name: "description", content: "Welcome to Progress Visualiser!" },
@@ -8,5 +6,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return "Welcome to Progress Visualiser!";
+    return (
+        null
+    );
 }
