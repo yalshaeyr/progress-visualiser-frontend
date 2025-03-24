@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import BreadcrumbStack from "./BreadcrumbStack";
 import MetricForm from "./MetricForm";
 
-export default function AppBar() {
+export default function AppBar({ onMetricSearch }) {
   return (
     <Stack
         sx={{
@@ -12,7 +12,9 @@ export default function AppBar() {
         direction="row"
     >
         <BreadcrumbStack/>
-        <MetricForm/>
+        <MetricForm
+            onMetricSearch={onMetricSearch}
+        />
     </Stack>
   );
 }

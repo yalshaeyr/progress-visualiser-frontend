@@ -39,7 +39,14 @@ export default function Home({ loaderData }) {
                     flexGrow: 1,
                 }}
             >
-                <AppBar />
+                <AppBar
+                    onMetricSearch={(metricSearch) => {
+                        const filteredMetrics = allMetrics.filter(({ name }) => {
+                            return name?.toLowerCase()?.includes(metricSearch.target.value?.toLowerCase())
+                        });
+                        setFilteredMetrics(filteredMetrics);
+                    }}
+                />
                 <Dashboard
                     metrics={filteredMetrics}
                 />

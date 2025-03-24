@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import SearchBar from './SearchBar';
 import MetricDatePicker from './MetricDatePicker';
 
-export default function MetricForm() {
+export default function MetricForm({ onMetricSearch }) {
     return (
         <Stack
             sx={{
@@ -15,7 +15,9 @@ export default function MetricForm() {
             direction="row"
             spacing={2}
         >
-            <SearchBar/>
+            <SearchBar
+                onSearch={onMetricSearch}
+            />
             <MetricDatePicker/>
         </Stack>
     )

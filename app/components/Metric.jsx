@@ -6,8 +6,8 @@ import Chip from '@mui/material/Chip';
 import { LineChart } from '@mui/x-charts/LineChart';
 
 export default function Metric({ name, unit, data = [], description}) {
-    const xAxis = data.map(({ recordedAt }) => new Date(recordedAt));
-    const yAxis = data.map(({ value }) => value);
+    const xAxis = data?.map(({ recordedAt }) => new Date(recordedAt));
+    const yAxis = data?.map(({ value }) => value);
 
     return (
         <Paper>
@@ -21,7 +21,7 @@ export default function Metric({ name, unit, data = [], description}) {
                         justifyContent={"space-between"}
                     >
                         <Typography variant="subtitle2">
-                            {yAxis.reduce((total, val) => total + val) ?? "N/A"}
+                            {yAxis.length == 0 ? []: yAxis.reduce((total, val) => total + val)}
                         </Typography>
                         <Chip
                             size="small"
