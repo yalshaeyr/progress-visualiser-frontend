@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Stack from "@mui/material/Stack";
 import AppBar from "../components/AppBar";
 import SideBar from "../components/SideBar";
 import Dashboard from "../components/Dashboard";
+import { Endpoints } from "../constants/Endpoints";
 
 export function meta() {
   return [
@@ -10,7 +12,24 @@ export function meta() {
   ];
 }
 
-export default function Home() {
+export async function clientLoader() {
+    const res = await fetch(Endpoints.MetricsRoot);
+    const metrics = await res.json();
+    const metricIds = metrics.map(({ id }) => id);
+    const data = await Promise.all(metricIds.map(async (id) => {
+        const res = await fetch(`${Endpoints.MetricDataForMetric}/${id}/`);
+        return res.json();
+    }));
+    metrics.forEach((metric, index) => {
+        metric.data = data[index];
+    });
+    return metrics;
+}
+
+export default function Home({ loaderData }) {
+    const [allMetrics, setAllMetrics] = useState(loaderData);
+    const [filteredMetrics, setFilteredMetrics] = useState(allMetrics);
+
     return (
         <Stack direction="row">
             <SideBar />
@@ -22,32 +41,7 @@ export default function Home() {
             >
                 <AppBar />
                 <Dashboard
-                    metrics={[
-                        {
-                            name: "Hours Worked",
-                            unit: "hrs",
-                            data: [
-                                { recordedAt: "2023-01-01T00:00:00Z", value: 1 },
-                                { recordedAt: "2023-01-02T00:00:00Z", value: 2 },
-                                { recordedAt: "2023-01-03T00:00:00Z", value: 3 },
-                                { recordedAt: "2023-01-04T00:00:00Z", value: 4 },
-                                { recordedAt: "2023-01-05T00:00:00Z", value: 5 },
-                            ],
-                            description: "Total hours worked",
-                        },
-                        {
-                            name: "Tasks Completed",
-                            unit: "tasks",
-                            data: [
-                                { recordedAt: "2023-01-01T00:00:00Z", value: 1 },
-                                { recordedAt: "2023-01-02T00:00:00Z", value: 2 },
-                                { recordedAt: "2023-01-03T00:00:00Z", value: 3 },
-                                { recordedAt: "2023-01-04T00:00:00Z", value: 4 },
-                                { recordedAt: "2023-01-05T00:00:00Z", value: 5 },
-                            ],
-                            description: "Total tasks completed",
-                        },
-                    ]}
+                    metrics={filteredMetrics}
                 />
             </Stack>
         </Stack>
