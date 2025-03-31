@@ -2,6 +2,7 @@ import Grid from "@mui/material/Grid2";
 import { Fragment } from "react";
 import Metric from "./Metric";
 import MetricSkeleton from "./MetricSkeleton";
+import AddMetric from "./AddMetric";
 
 export default function Dashboard({ metrics, loading = false, onRefresh }) {
     return (
@@ -20,19 +21,27 @@ export default function Dashboard({ metrics, loading = false, onRefresh }) {
                     </Grid>
                 </Fragment>
             ) : (
-            {metrics?.map((metric, index) => (
-                <Grid
-                    key={index}
-                    size={4}
-                >
-                    <Metric
-                        name={metric.name}
-                        unit={metric.unit}
-                        data={metric.data}
-                        description={metric.description}
-                    />
-                </Grid>
-            ))}
+                <Fragment>
+                    {metrics?.map((metric, index) => (
+                        <Grid
+                            key={index}
+                            size={4}
+                        >
+                            <Metric
+                                id={metric.id}
+                                name={metric.name}
+                                unit={metric.unit}
+                                data={metric.data}
+                                description={metric.description}
+                                onDelete={onRefresh}
+                            />
+                        </Grid>
+                    ))}
+                    <Grid size={4}>
+                        <AddMetric onComplete={onRefresh} />
+                    </Grid>
+                </Fragment>
+            )}
         </Grid>
-    )
+    );
 }
