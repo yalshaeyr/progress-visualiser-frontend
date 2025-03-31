@@ -3,6 +3,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { Link } from "react-router";
 import HomeIcon from '@mui/icons-material/Home';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 
@@ -14,22 +15,37 @@ export default function NavigationList() {
                 mt: 2
             }}
         >
-            <ListItem
-                sx={{
-                    paddingLeft: 0
+            <Link
+                to="/"
+                style={{
+                    textDecoration: 'none',
+                    color: 'inherit'
                 }}
             >
-                <ListItemButton>
-                    <ListItemIcon>
-                        <HomeIcon
-                            fontSize='small'
-                        />
-                    </ListItemIcon>
-                    <ListItemText
-                        primary="Home"
-                    />
-                </ListItemButton>
-            </ListItem>
+                <ListItem
+                    sx={{
+                        paddingLeft: 0
+                    }}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <HomeIcon
+                                fontSize='small'
+                            />
+                        </ListItemIcon>
+                        <ListItemText>
+                            Home
+                        </ListItemText>
+                    </ListItemButton>
+                </ListItem>
+            </Link>
+            <Link
+                to="/metrics"
+                style={{
+                    textDecoration: 'none',
+                    color: 'inherit'
+                }}                            
+            >
             <ListItem
                 sx={{
                     paddingLeft: 0
@@ -41,11 +57,12 @@ export default function NavigationList() {
                             fontSize='small'
                         />
                     </ListItemIcon>
-                    <ListItemText
-                        primary="Metrics"
-                    />
+                    <ListItemText>
+                        Metrics
+                    </ListItemText>
                 </ListItemButton>
             </ListItem>
+            </Link>
         </List>
     );
 }

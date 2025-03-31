@@ -1,8 +1,8 @@
 import Stack from '@mui/material/Stack';
 import SearchBar from './SearchBar';
-import MetricDatePicker from './MetricDatePicker';
+import ProgressVisualiserDatePicker from './ProgressVisualiserDatePicker';
 
-export default function MetricForm({ onMetricSearch }) {
+export default function ProgressVisualiserForm({ onSearch }) {
     return (
         <Stack
             sx={{
@@ -16,9 +16,9 @@ export default function MetricForm({ onMetricSearch }) {
             spacing={2}
         >
             <SearchBar
-                onSearch={onMetricSearch}
+                onSearch={onSearch}
             />
-            <MetricDatePicker/>
+            <ProgressVisualiserDatePicker/>
         </Stack>
     )
 }
