@@ -6,6 +6,7 @@ import {
     Scripts,
     ScrollRestoration,
 } from "react-router";
+import LoadingScreen from "./components/LoadingScreen";
   
 export const links = () => [
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -39,7 +40,7 @@ export function Layout({ children }) {
 }
 
 export function HydrateFallback() {
-    return <div>Loading...</div>;
+    return <LoadingScreen />
 }
 
 export default function App() {
