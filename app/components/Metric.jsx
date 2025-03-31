@@ -129,6 +129,7 @@ export default function Metric({
                                 )}
                             </Stack>
                 </Stack>
+                    )}
             </CardContent>
         </Paper>
             <DeleteMetricDialog
