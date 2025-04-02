@@ -7,8 +7,6 @@ import {
     DialogContent,
     DialogTitle,
     TextField,
-    Box,
-    CircularProgress,
 } from "@mui/material";
 import { useState } from "react";
 import { Endpoints } from "../constants/Endpoints";
