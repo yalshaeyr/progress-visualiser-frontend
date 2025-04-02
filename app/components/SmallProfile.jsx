@@ -1,58 +1,62 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useNotification } from "../hooks/useNotification";
 
-export default function SmallProfile({
-    username,
-    email
-}) {
+export default function SmallProfile({ username, email }) {
+    const showNotification = useNotification();
+
     return (
         <Box
             sx={{
-                display: 'flex',
-                flexDirection: 'row',
+                display: "flex",
+                flexDirection: "row",
                 pb: 2,
                 pt: 2,
                 boxShadow: 1,
-                overflow: 'hidden'
-            }}>
+                overflow: "hidden",
+            }}
+        >
             <Avatar
                 sx={{
                     mr: 1,
-                    ml: 1
+                    ml: 1,
                 }}
             >
-                {
-                    username ?
-                        username[0].toUpperCase()
-                        :
-                        ''
-                }
+                {username ? username[0].toUpperCase() : ""}
             </Avatar>
             <Box
                 sx={{
                     flex: 1,
-                    overflow: 'hidden'
+                    overflow: "hidden",
                 }}
             >
                 <Typography variant="body1">{username}</Typography>
-                <Typography 
-                    variant="body2" 
-                    color="textSecondary" 
+                <Typography
+                    variant="body2"
+                    color="textSecondary"
                     sx={{
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden'
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
                     }}
                 >
                     {email}
                 </Typography>
             </Box>
-            <IconButton>
-                <MoreVertIcon/>
+            <IconButton
+                onClick={() =>
+                    showNotification(
+                        "warning",
+                        "Not implemented yet",
+                        "Please check back later"
+                    )
+                }
+            >
+                <MoreVertIcon />
             </IconButton>
         </Box>
-    )
+    );
 }
