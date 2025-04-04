@@ -3,8 +3,11 @@ import { Fragment } from "react";
 import Metric from "./Metric";
 import MetricSkeleton from "./MetricSkeleton";
 import AddMetric from "./AddMetric";
+import { useWakeUpNotification } from "../hooks/useWakeUpNotification";
 
 export default function Dashboard({ metrics, loading = false, onRefresh }) {
+    useWakeUpNotification(loading);
+
     return (
         <Grid
             container

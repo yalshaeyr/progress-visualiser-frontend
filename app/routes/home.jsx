@@ -55,7 +55,14 @@ export default function Home({ loaderData }) {
     const { metricsPromise } = loaderData;
 
     return (
-        <Suspense fallback={<Dashboard loading={true} />}>
+        <Suspense
+            fallback={
+                <Dashboard
+                    loading={true}
+                    warmUpNotification={true}
+                />
+            }
+        >
             <Await resolve={metricsPromise}>
                 {
                     /**
