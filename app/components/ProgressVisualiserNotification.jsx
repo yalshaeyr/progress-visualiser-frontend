@@ -7,22 +7,22 @@ export default function ProgressVisualiserNotification() {
 
     if (!notification) return null;
 
-    const { severity, title, message } = notification;
+    const { severity, title, message, duration } = notification;
 
     return (
         <Snackbar
             open={notification}
-            autoHideDuration={5000}
+            autoHideDuration={duration ? duration : 5000}
             onClose={closeNotification}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         >
             <Alert
                 onClose={closeNotification}
-                severity={severity}
-                sx={{ width: "100%", maxWidth: "300px" }}
+                severity={severity ? severity : "error"}
+                sx={{ width: "100%", maxWidth: "400px" }}
             >
-                {title && <AlertTitle>{title}</AlertTitle>}
-                {message}
+                <AlertTitle>{title ? title : "Unknown Error"}</AlertTitle>
+                {message ? message : "An unknown error occurred"}
             </Alert>
         </Snackbar>
     );
