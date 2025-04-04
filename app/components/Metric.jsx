@@ -9,6 +9,7 @@ import { Delete } from "@mui/icons-material";
 import { Button, IconButton, CircularProgress } from "@mui/material";
 import { Fragment, useState } from "react";
 import { Endpoints } from "../constants/Endpoints";
+import { useNotification } from "../hooks/useNotification";
 import DeleteMetricDialog from "./DeleteMetricDialog";
 
 const deleteMetric = async (metricId) => {
@@ -21,6 +22,16 @@ const deleteMetric = async (metricId) => {
     });
 };
 
+const recordMetricData = async (metricData) => {
+    await fetch(`${Endpoints.MetricDataRoot}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(metricData),
+    });
+};
+
 export default function Metric({
     name,
     unit,
@@ -29,6 +40,7 @@ export default function Metric({
     id,
     onDelete,
 }) {
+    const showNotification = useNotification();
     const [openDialog, setOpenDialog] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -47,8 +59,8 @@ export default function Metric({
 
     return (
         <Fragment>
-        <Paper>
-            <CardContent>
+            <Paper>
+                <CardContent>
                     {isDeleting ? (
                         <Box
                             sx={{
@@ -68,29 +80,29 @@ export default function Metric({
                                 alignItems={"center"}
                             >
                                 <Typography variant="subtitle1">
-                    {name}
-                </Typography>                
+                                    {name}
+                                </Typography>
                                 <IconButton onClick={() => setOpenDialog(true)}>
                                     <Delete color="error" />
                                 </IconButton>
                             </Stack>
-                <Stack>
-                    <Stack
-                        direction="row"
-                        justifyContent={"space-between"}
-                    >
-                        <Typography variant="subtitle2">
+                            <Stack>
+                                <Stack
+                                    direction="row"
+                                    justifyContent={"space-between"}
+                                >
+                                    <Typography variant="subtitle2">
                                         {total}
-                        </Typography>
-                        <Chip
-                            size="small"
+                                    </Typography>
+                                    <Chip
+                                        size="small"
                                         color="success"
-                            label={unit}
-                        />
-                    </Stack>
-                    <Typography variant="caption">
-                        {description}
-                    </Typography>
+                                        label={unit}
+                                    />
+                                </Stack>
+                                <Typography variant="caption">
+                                    {description}
+                                </Typography>
                                 {xAxis.length == 0 || yAxis.length == 0 ? (
                                     <Box
                                         sx={{
@@ -105,33 +117,50 @@ export default function Metric({
                                         </Typography>
                                     </Box>
                                 ) : (
-                    <LineChart
+                                    <LineChart
                                         xAxis={[
-                                {
-                                    data: xAxis,
-                                    valueFormatter: (date) => {
+                                            {
+                                                data: xAxis,
+                                                valueFormatter: (date) => {
                                                     return new Date(
                                                         date
                                                     ).toLocaleDateString();
                                                 },
                                             },
                                         ]}
-                        series={[
-                            {
-                                data: yAxis,
+                                        series={[
+                                            {
+                                                data: yAxis,
                                                 area: true,
                                             },
-                        ]}
-                        leftAxis={null}
-                        bottomAxis={null}
-                        height={300}
-                    />
+                                        ]}
+                                        leftAxis={null}
+                                        bottomAxis={null}
+                                        height={300}
+                                    />
                                 )}
                             </Stack>
-                </Stack>
+                            <Stack
+                                direction={"row"}
+                                justifyContent={"center"}
+                            >
+                                <Button
+                                    sx={{ width: "50%" }}
+                                    onClick={() =>
+                                        showNotification(
+                                            "warning",
+                                            "Not implemented yet",
+                                            "Please check back later"
+                                        )
+                                    }
+                                >
+                                    Record Result
+                                </Button>
+                            </Stack>
+                        </Stack>
                     )}
-            </CardContent>
-        </Paper>
+                </CardContent>
+            </Paper>
             <DeleteMetricDialog
                 open={openDialog}
                 onClose={() => setOpenDialog(false)}

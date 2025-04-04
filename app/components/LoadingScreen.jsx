@@ -9,18 +9,18 @@ export default function LoadingScreen() {
     return (
         <Box
             sx={{
-                position: 'fixed',
+                position: "fixed",
                 top: 0,
                 left: 0,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100vh',
-                width: '100vw',
-                backgroundColor: 'background.default',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+                width: "100vw",
+                backgroundColor: "background.default",
             }}
         >
             <CircularProgress />
         </Box>
     );
-};
+}
