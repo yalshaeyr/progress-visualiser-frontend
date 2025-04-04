@@ -21,5 +21,5 @@ export function useWakeUpNotification(loading) {
             clearTimeout(timeoutId);
             closeNotification();
         };
-    }, [showNotification]);
+    }, [loading, showNotification, closeNotification]);
 }
