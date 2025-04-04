@@ -73,7 +73,7 @@ export default function Home({ loaderData }) {
                      */
                     (resolvedMetrics) => {
                         const { setSearchLogic } = useSearch();
-                        const [allMetrics] = useState(resolvedMetrics);
+                        const allMetrics = resolvedMetrics;
                         const [filteredMetrics, setFilteredMetrics] =
                             useState(resolvedMetrics);
 
