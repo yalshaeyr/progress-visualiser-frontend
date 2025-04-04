@@ -40,7 +40,7 @@ export default function Metric({
     id,
     onDelete,
 }) {
-    const showNotification = useNotification();
+    const { showNotification } = useNotification();
     const [openDialog, setOpenDialog] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
 
