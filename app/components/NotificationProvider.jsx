@@ -4,9 +4,12 @@ import { NotificationContext } from "../contexts/NotificationContext";
 export default function NotificationProvider({ children }) {
     const [notification, setNotification] = useState(null);
 
-    const showNotification = useCallback((severity, title, message) => {
-        setNotification({ severity, title, message });
-    }, []);
+    const showNotification = useCallback(
+        (severity, title, message, duration) => {
+            setNotification({ severity, title, message, duration });
+        },
+        []
+    );
 
     const closeNotification = useCallback(() => {
         setNotification(null);
