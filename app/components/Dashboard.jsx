@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid2";
 import { Fragment } from "react";
 import Metric from "./Metric";
 import MetricSkeleton from "./MetricSkeleton";
-import AddMetric from "./AddMetric";
+import AddMetric from "./AddMetric/AddMetric";
 import { useWakeUpNotification } from "../hooks/useWakeUpNotification";
 
 export default function Dashboard({ metrics, loading = false, onRefresh }) {

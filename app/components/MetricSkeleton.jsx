@@ -8,7 +8,10 @@ import Chip from "@mui/material/Chip";
 export default function MetricSkeleton() {
     const skeletonBarHeights = ["200px", "100px", "150px", "50px", "175px"];
     return (
-        <Paper sx={{ height: "100%" }}>
+        <Paper
+            data-testid="metric-skeleton"
+            sx={{ height: "100%" }}
+        >
             <CardContent>
                 <Skeleton width="15%">
                     <Typography variant="subtitle2">.</Typography>
