@@ -5,7 +5,7 @@ import { useNotification } from "../hooks/useNotification";
 import dayjs from "dayjs";
 
 export default function ProgressVisualiserDatePicker() {
-    const showNotification = useNotification();
+    const { showNotification } = useNotification();
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>

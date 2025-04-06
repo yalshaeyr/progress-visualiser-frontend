@@ -3,6 +3,7 @@ import { useState, Suspense, Fragment, useEffect } from "react";
 import { Await } from "react-router";
 import { GridRowModes, DataGrid, GridToolbarContainer } from "@mui/x-data-grid";
 import { useSearch } from "../hooks/useSearch";
+import DataGridSkeleton from "../components/DataGridSkeleton";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
@@ -247,20 +248,7 @@ export default function Metrics({ loaderData }) {
     ];
 
     return (
-        <Suspense
-            fallback={
-                <DataGrid
-                    loading
-                    slotProps={{
-                        loadingOverlay: {
-                            variant: "skeleton",
-                            noRowsVariant: "skeleton",
-                        },
-                    }}
-                    columns={columns}
-                />
-            }
-        >
+        <Suspense fallback={<DataGridSkeleton columns={columns} />}>
             <Await resolve={metricsPromise}>
                 {(resolvedMetrics) => {
                     const { setSearchLogic } = useSearch();

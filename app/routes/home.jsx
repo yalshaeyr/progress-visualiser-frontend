@@ -55,7 +55,14 @@ export default function Home({ loaderData }) {
     const { metricsPromise } = loaderData;
 
     return (
-        <Suspense fallback={<Dashboard loading={true} />}>
+        <Suspense
+            fallback={
+                <Dashboard
+                    loading={true}
+                    warmUpNotification={true}
+                />
+            }
+        >
             <Await resolve={metricsPromise}>
                 {
                     /**
@@ -66,7 +73,7 @@ export default function Home({ loaderData }) {
                      */
                     (resolvedMetrics) => {
                         const { setSearchLogic } = useSearch();
-                        const [allMetrics] = useState(resolvedMetrics);
+                        const allMetrics = resolvedMetrics;
                         const [filteredMetrics, setFilteredMetrics] =
                             useState(resolvedMetrics);
 

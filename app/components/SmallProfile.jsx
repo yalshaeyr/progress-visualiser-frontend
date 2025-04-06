@@ -6,7 +6,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNotification } from "../hooks/useNotification";
 
 export default function SmallProfile({ username, email }) {
-    const showNotification = useNotification();
+    const { showNotification } = useNotification();
 
     return (
         <Box
