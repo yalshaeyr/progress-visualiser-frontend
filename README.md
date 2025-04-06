@@ -4,6 +4,8 @@ A dashboard for visualising metrics and milestones indicative of progress toward
 
 ## TO-DO
 
+-   Basic component unit tests
+-   Basic component UI tests
 -   Implement custom fetch hook for error handling
     -   how do we include this in client loader?
 -   Navigating via url should be possible (it's not, returns 404)
@@ -12,8 +14,6 @@ A dashboard for visualising metrics and milestones indicative of progress toward
 -   Clean component code
 -   Organise code (folder structure)
 -   Functionality for date picker: filter with dates
--   Basic component unit tests
--   Basic component UI tests
 -   Add authentication
 -   Add metrics validation
 -   Functionality for users?
