@@ -10,7 +10,7 @@ jest.mock("../../hooks/useSearch", () => ({
 jest.mock("../BreadcrumbStack/BreadcrumbStack", () => () => (
     <div data-testid="breadcrumb-stack" />
 ));
-jest.mock("../ProgressVisualiserForm", () => (props) => (
+jest.mock("../ProgressVisualiserForm/ProgressVisualiserForm", () => (props) => (
     <div
         data-testid="progress-visualiser-form"
         onClick={props.onSearch}

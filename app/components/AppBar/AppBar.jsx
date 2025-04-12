@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import BreadcrumbStack from "../BreadcrumbStack/BreadcrumbStack";
-import ProgressVisualiserForm from "../ProgressVisualiserForm";
+import ProgressVisualiserForm from "../ProgressVisualiserForm/ProgressVisualiserForm";
 import { useSearch } from "../../hooks/useSearch";
 
 export default function AppBar() {
