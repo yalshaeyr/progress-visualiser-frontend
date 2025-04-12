@@ -1,5 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
-import { useWakeUpNotification } from "../hooks/useWakeUpNotification";
+import { useWakeUpNotification } from "../../hooks/useWakeUpNotification";
 
 export default function DataGridSkeleton({ columns = [] }) {
     useWakeUpNotification(true);

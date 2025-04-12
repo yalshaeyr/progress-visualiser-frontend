@@ -3,7 +3,7 @@ import { useState, Suspense, Fragment, useEffect } from "react";
 import { Await } from "react-router";
 import { GridRowModes, DataGrid, GridToolbarContainer } from "@mui/x-data-grid";
 import { useSearch } from "../hooks/useSearch";
-import DataGridSkeleton from "../components/DataGridSkeleton";
+import DataGridSkeleton from "../components/DataGridSkeleton/DataGridSkeleton";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
