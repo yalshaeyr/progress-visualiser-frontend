@@ -22,9 +22,10 @@ const deriveBreadcrumbs = (pathName) => {
     // transform /parentPath/childPath1/childPath2 into
     // /parentPath, /parentPath/childPath1 and /parentPath/childPath1/childPath2
     const links = paths?.map((_path, index) => {
-        return index == 0
-            ? "/" + paths[0]
-            : paths.slice(0, index + 1)?.join("/");
+        return (
+            "/" +
+            (index === 0 ? paths[0] : paths.slice(0, index + 1)?.join("/"))
+        );
     });
 
     // capitalise the first letter of each path
@@ -49,6 +50,7 @@ export default function BreadcrumbStack() {
         <Stack
             spacing={2}
             direction="row"
+            data-testid="breadcrumb-stack"
         >
             <Breadcrumbs
                 separator={<NavigateNextIcon fontSize="small" />}

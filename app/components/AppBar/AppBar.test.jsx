@@ -7,7 +7,7 @@ jest.mock("../../hooks/useSearch", () => ({
     useSearch: jest.fn(),
 }));
 
-jest.mock("../BreadcrumbStack", () => () => (
+jest.mock("../BreadcrumbStack/BreadcrumbStack", () => () => (
     <div data-testid="breadcrumb-stack" />
 ));
 jest.mock("../ProgressVisualiserForm", () => (props) => (
