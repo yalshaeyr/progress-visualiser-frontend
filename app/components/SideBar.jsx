@@ -3,7 +3,7 @@ import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import SmallProfile from "./SmallProfile/SmallProfile";
-import NavigationList from "./NavigationList";
+import NavigationList from "./NavigationList/NavigationList";
 
 export default function SideBar() {
     return (
