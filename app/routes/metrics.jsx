@@ -3,6 +3,7 @@ import { useState, Suspense, Fragment, useEffect } from "react";
 import { Await } from "react-router";
 import { GridRowModes, DataGrid, GridToolbarContainer } from "@mui/x-data-grid";
 import { useSearch } from "../hooks/useSearch";
+import { postMetric, deleteMetric } from "../util/api";
 import DataGridSkeleton from "../components/DataGridSkeleton/DataGridSkeleton";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
@@ -22,28 +23,6 @@ export async function clientLoader() {
 
     return { criticalData, metricsPromise };
 }
-
-const postMetric = async (metric) => {
-    metric.id = -1;
-
-    return fetch(Endpoints.MetricsRoot, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(metric),
-    }).then((res) => res.json());
-};
-
-const deleteMetric = async (metricId) => {
-    await fetch(`${Endpoints.MetricDataForMetric}/${metricId}`, {
-        method: "DELETE",
-    });
-
-    return fetch(`${Endpoints.MetricsRoot}/${metricId}`, {
-        method: "DELETE",
-    });
-};
 
 function EditToolbar(props) {
     const {

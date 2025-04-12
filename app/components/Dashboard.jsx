@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import Metric from "./Metric";
 import MetricSkeleton from "./MetricSkeleton";
 import AddMetric from "./AddMetric/AddMetric";
+import { deleteMetric } from "../../util/api";
 import { useWakeUpNotification } from "../hooks/useWakeUpNotification";
 
 export default function Dashboard({ metrics, loading = false, onRefresh }) {
@@ -36,7 +37,8 @@ export default function Dashboard({ metrics, loading = false, onRefresh }) {
                                 unit={metric.unit}
                                 data={metric.data}
                                 description={metric.description}
-                                onDelete={onRefresh}
+                                onDelete={deleteMetric}
+                                onDeleteCompletion={onRefresh}
                             />
                         </Grid>
                     ))}
