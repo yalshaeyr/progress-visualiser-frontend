@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import ProgressVisualiserForm from "./ProgressVisualiserForm";
 
-jest.mock("../SearchBar", () => (props) => (
+jest.mock("../SearchBar/SearchBar", () => (props) => (
     <div
         data-testid="search-bar"
         onClick={props.onSearch}
