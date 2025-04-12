@@ -9,7 +9,10 @@
         "test": "jest"
     },
     "jest": {
-        "testEnvironment": "jsdom"
+        "testEnvironment": "jsdom",
+        "setupFiles": [
+            "<rootDir>/app/setupTests.js"
+        ]
     },
     "dependencies": {
         "@emotion/react": "^11.14.0",
