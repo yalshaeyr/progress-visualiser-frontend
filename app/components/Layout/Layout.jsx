@@ -1,9 +1,9 @@
-import NotificationProvider from "./NotificationProvider";
+import NotificationProvider from "../NotificationProvider";
 import Stack from "@mui/material/Stack";
-import SideBar from "./SideBar/SideBar";
-import SearchProvider from "./SearchProvider";
-import AppBar from "./AppBar/AppBar";
-import ProgressVisualiserNotification from "./ProgressVisualiserNotification";
+import SideBar from "../SideBar/SideBar";
+import SearchProvider from "../SearchProvider";
+import AppBar from "../AppBar/AppBar";
+import ProgressVisualiserNotification from "../ProgressVisualiserNotification";
 import { Outlet } from "react-router";
 
 export default function Layout() {
