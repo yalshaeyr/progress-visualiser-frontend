@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import SearchBar from "../SearchBar/SearchBar";
-import ProgressVisualiserDatePicker from "../ProgressVisualiserDatePicker";
+import ProgressVisualiserDatePicker from "../ProgressVisualiserDatePicker/ProgressVisualiserDatePicker";
 
 export default function ProgressVisualiserForm({ onSearch }) {
     return (

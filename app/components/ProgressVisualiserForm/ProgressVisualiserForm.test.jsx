@@ -8,9 +8,10 @@ jest.mock("../SearchBar/SearchBar", () => (props) => (
         onClick={props.onSearch}
     ></div>
 ));
-jest.mock("../ProgressVisualiserDatePicker", () => () => (
-    <div data-testid="progress-visualiser-date-picker"></div>
-));
+jest.mock(
+    "../ProgressVisualiserDatePicker/ProgressVisualiserDatePicker",
+    () => () => <div data-testid="progress-visualiser-date-picker"></div>
+);
 
 describe("ProgressVisualiserForm", () => {
     it("renders ProgressVisualiserForm with child components", () => {
