@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useNotification } from "../hooks/useNotification";
+import { useNotification } from "../../hooks/useNotification";
 
 export default function SmallProfile({ username, email }) {
     const { showNotification } = useNotification();

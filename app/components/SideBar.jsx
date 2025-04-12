@@ -1,9 +1,9 @@
-import React from 'react';
-import Drawer from '@mui/material/Drawer';
-import Divider from '@mui/material/Divider';
-import Box from '@mui/material/Box';
-import SmallProfile from './SmallProfile';
-import NavigationList from './NavigationList';
+import React from "react";
+import Drawer from "@mui/material/Drawer";
+import Divider from "@mui/material/Divider";
+import Box from "@mui/material/Box";
+import SmallProfile from "./SmallProfile/SmallProfile";
+import NavigationList from "./NavigationList";
 
 export default function SideBar() {
     return (
@@ -13,10 +13,13 @@ export default function SideBar() {
                 sx={{
                     width: 240,
                     flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: 240, boxSizing: 'border-box' },
+                    [`& .MuiDrawer-paper`]: {
+                        width: 240,
+                        boxSizing: "border-box",
+                    },
                 }}
             >
-                <NavigationList/>
+                <NavigationList />
                 <Box sx={{ flexGrow: 1 }} />
                 <Divider />
                 <SmallProfile
