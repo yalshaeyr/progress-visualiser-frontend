@@ -2,8 +2,8 @@ import React from "react";
 import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
-import SmallProfile from "./SmallProfile/SmallProfile";
-import NavigationList from "./NavigationList/NavigationList";
+import SmallProfile from "../SmallProfile/SmallProfile";
+import NavigationList from "../NavigationList/NavigationList";
 
 export default function SideBar() {
     return (
@@ -18,6 +18,7 @@ export default function SideBar() {
                         boxSizing: "border-box",
                     },
                 }}
+                data-testid="sidebar-drawer"
             >
                 <NavigationList />
                 <Box sx={{ flexGrow: 1 }} />
