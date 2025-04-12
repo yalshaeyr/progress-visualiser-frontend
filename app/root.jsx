@@ -6,7 +6,7 @@ import {
     Scripts,
     ScrollRestoration,
 } from "react-router";
-import LoadingScreen from "./components/LoadingScreen";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 
 export const links = () => [
     { rel: "preconnect", href: "https://fonts.googleapis.com" },

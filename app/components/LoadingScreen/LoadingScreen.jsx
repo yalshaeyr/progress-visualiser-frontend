@@ -19,6 +19,7 @@ export default function LoadingScreen() {
                 width: "100vw",
                 backgroundColor: "background.default",
             }}
+            data-testid="loading-screen"
         >
             <CircularProgress />
         </Box>
