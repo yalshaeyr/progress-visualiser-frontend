@@ -4,9 +4,10 @@ import Layout from "./Layout";
 
 jest.mock("../SideBar/SideBar", () => () => <div data-testid="sidebar"></div>);
 jest.mock("../AppBar/AppBar", () => () => <div data-testid="appbar"></div>);
-jest.mock("../ProgressVisualiserNotification", () => () => (
-    <div data-testid="notification"></div>
-));
+jest.mock(
+    "../ProgressVisualiserNotification/ProgressVisualiserNotification",
+    () => () => <div data-testid="notification"></div>
+);
 jest.mock("../SearchProvider", () => ({ children }) => (
     <div data-testid="search-provider">{children}</div>
 ));

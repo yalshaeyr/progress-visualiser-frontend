@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Alert, AlertTitle, Snackbar } from "@mui/material";
-import { NotificationContext } from "../contexts/NotificationContext";
+import { NotificationContext } from "../../contexts/NotificationContext";
 
 export default function ProgressVisualiserNotification() {
     const { notification, closeNotification } = useContext(NotificationContext);
@@ -11,10 +11,11 @@ export default function ProgressVisualiserNotification() {
 
     return (
         <Snackbar
-            open={notification}
+            open={!!notification}
             autoHideDuration={duration ? duration : 5000}
             onClose={closeNotification}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            data-testid="notification-snackbar"
         >
             <Alert
                 onClose={closeNotification}
