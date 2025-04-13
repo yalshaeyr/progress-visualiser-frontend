@@ -18,3 +18,5 @@ const MetricsModel = [
         editable: true,
     },
 ];
+
+export default MetricsModel;

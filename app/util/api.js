@@ -9,7 +9,17 @@ export const postMetric = async (metric) => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(metric),
-    }).then((res) => res.json());
+    });
+};
+
+export const putMetric = async (metric) => {
+    return fetch(`${Endpoints.MetricsRoot}/${metric.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(metric),
+    });
 };
 
 export const deleteMetric = async (metricId) => {
