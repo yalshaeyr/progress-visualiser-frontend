@@ -11,9 +11,12 @@ jest.mock(
 jest.mock("../SearchProvider/SearchProvider", () => ({ children }) => (
     <div data-testid="search-provider">{children}</div>
 ));
-jest.mock("../NotificationProvider", () => ({ children }) => (
-    <div data-testid="notification-provider">{children}</div>
-));
+jest.mock(
+    "../NotificationProvider/NotificationProvider",
+    () =>
+        ({ children }) =>
+            <div data-testid="notification-provider">{children}</div>
+);
 jest.mock("react-router", () => ({
     Outlet: () => <div data-testid="outlet"></div>,
 }));

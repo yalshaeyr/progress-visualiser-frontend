@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { NotificationContext } from "../contexts/NotificationContext";
+import { NotificationContext } from "../../contexts/NotificationContext";
 
 export default function NotificationProvider({ children }) {
     const [notification, setNotification] = useState(null);
