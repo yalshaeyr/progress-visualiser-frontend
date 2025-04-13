@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SearchContext } from "../contexts/SearchContext";
+import { SearchContext } from "../../contexts/SearchContext";
 
 export default function SearchProvider({ children }) {
     const [searchLogic, setSearchLogic] = useState(() => {});

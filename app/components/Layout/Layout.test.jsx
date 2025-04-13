@@ -8,7 +8,7 @@ jest.mock(
     "../ProgressVisualiserNotification/ProgressVisualiserNotification",
     () => () => <div data-testid="notification"></div>
 );
-jest.mock("../SearchProvider", () => ({ children }) => (
+jest.mock("../SearchProvider/SearchProvider", () => ({ children }) => (
     <div data-testid="search-provider">{children}</div>
 ));
 jest.mock("../NotificationProvider", () => ({ children }) => (
