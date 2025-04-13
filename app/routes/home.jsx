@@ -2,7 +2,7 @@ import { Endpoints } from "../constants/Endpoints";
 import { useSearch } from "../hooks/useSearch";
 import { useState, useEffect, Suspense } from "react";
 import { Await } from "react-router";
-import Dashboard from "../components/Dashboard";
+import Dashboard from "../components/Dashboard/Dashboard";
 
 export function meta() {
     return [

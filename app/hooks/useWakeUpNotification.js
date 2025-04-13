@@ -10,7 +10,7 @@ export function useWakeUpNotification(loading) {
                 showNotification(
                     "warning",
                     "Warming up",
-                    "This app is having a slow start... It will wake up soon!",
+                    "This app is starting after a period of inactivity... It will wake up soon!",
                     10000
                 );
             }
