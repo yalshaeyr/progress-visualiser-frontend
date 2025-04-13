@@ -11,7 +11,7 @@ import {
 import { useState } from "react";
 import { useNotification } from "../../hooks/useNotification";
 import { postMetric } from "../../util/api";
-import MetricSkeleton from "../MetricSkeleton";
+import MetricSkeleton from "../MetricSkeleton/MetricSkeleton";
 
 export default function AddMetric({ onComplete }) {
     const { showNotification } = useNotification();

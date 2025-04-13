@@ -41,6 +41,7 @@ export default function MetricSkeleton() {
                             return (
                                 <Skeleton
                                     variant="rectangular"
+                                    data-testid={"skeleton-bar-" + index}
                                     width="5%"
                                     height={height}
                                     key={index}

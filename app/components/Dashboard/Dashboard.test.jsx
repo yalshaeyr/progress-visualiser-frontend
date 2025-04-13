@@ -8,7 +8,7 @@ jest.mock("../Metric/Metric", () => (props) => (
     </div>
 ));
 
-jest.mock("../MetricSkeleton", () => () => (
+jest.mock("../MetricSkeleton/MetricSkeleton", () => () => (
     <div data-testid="metric-skeleton"></div>
 ));
 

@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid2";
 import { Fragment } from "react";
 import Metric from "../Metric/Metric";
-import MetricSkeleton from "../MetricSkeleton";
+import MetricSkeleton from "../MetricSkeleton/MetricSkeleton";
 import AddMetric from "../AddMetric/AddMetric";
 import { deleteMetric } from "../../util/api";
 import { useWakeUpNotification } from "../../hooks/useWakeUpNotification";
