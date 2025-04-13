@@ -25,7 +25,7 @@ export default function AddMetric({ onComplete }) {
     });
 
     const validateMetric = (metric) => {
-        return metric.name && metric.description && metric.unit;
+        return metric.name.trim() && metric.description.trim() && metric.unit.trim();
     };
 
     const handleChange = (field) => (event) => {
