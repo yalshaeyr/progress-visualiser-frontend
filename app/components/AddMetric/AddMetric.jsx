@@ -25,11 +25,42 @@ export default function AddMetric({ onComplete }) {
     });
 
     const validateMetric = (metric) => {
-        return metric.name.trim() && metric.description.trim() && metric.unit.trim();
+        return (
+            metric.name.trim() &&
+            metric.description.trim() &&
+            metric.unit.trim()
+        );
     };
 
     const handleChange = (field) => (event) => {
         setMetric({ ...metric, [field]: event.target.value });
+    };
+
+    const postAndCheckMetric = async (metric) => {
+        postMetric(metric)
+            .then((response) => {
+                if (response.status.toString().startsWith("2")) {
+                    setMetric({ name: "", description: "", unit: "" });
+                    showNotification(
+                        "success",
+                        "Success",
+                        "Metric added successfully"
+                    );
+                }
+
+                // handle content safety check error
+                else if (response.status === 400) {
+                    showNotification(
+                        "error",
+                        "Error",
+                        "Failed to add metric. The content might be unsafe. Please try again."
+                    );
+                }
+            })
+            .finally(async () => {
+                setIsSubmitting(false);
+                await onComplete?.();
+            });
     };
 
     const handleSubmit = async () => {
@@ -44,10 +75,8 @@ export default function AddMetric({ onComplete }) {
 
         setIsSubmitting(true);
         setOpen(false);
-        await postMetric(metric);
-        setMetric({ name: "", description: "", unit: "" });
-        await onComplete?.();
-        setIsSubmitting(false);
+
+        await postAndCheckMetric(metric);
     };
 
     return (

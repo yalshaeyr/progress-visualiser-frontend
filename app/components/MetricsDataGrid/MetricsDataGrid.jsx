@@ -105,8 +105,11 @@ export default function MetricsDataGrid({ initialRows, getRefreshedMetrics }) {
                         ...rowModesModel,
                         [newRow.id]: { mode: GridRowModes.Edit },
                     });
+
                     return Promise.reject(
-                        new Error(`The metric could not be ${verb}`)
+                        new Error(
+                            `The metric could not be ${verb}. Is your content unsafe?`
+                        )
                     );
                 }
             };

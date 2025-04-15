@@ -84,7 +84,7 @@ describe("AddMetric", () => {
 
     it("submits the form", async () => {
         const mockOnComplete = jest.fn();
-        const mockPostMetric = jest.fn(() => Promise.resolve({}));
+        const mockPostMetric = jest.fn(() => Promise.resolve({ status: 200 }));
         postMetric.mockImplementation(mockPostMetric);
 
         const { user } = setup(<AddMetric onComplete={mockOnComplete} />);
@@ -158,6 +158,40 @@ describe("AddMetric", () => {
             expect(
                 screen.queryByTestId("add-metric-dialog")
             ).not.toBeInTheDocument();
+        });
+    });
+
+    it("Rejected metric submission shows error notification", async () => {
+        const mockOnComplete = jest.fn();
+        const mockPostMetric = jest.fn(() =>
+            Promise.resolve({ status: 400, json: () => ({}) })
+        );
+        postMetric.mockImplementation(mockPostMetric);
+
+        const { user } = setup(<AddMetric onComplete={mockOnComplete} />);
+
+        const addMetricCard = screen.getByTestId("add-metric-card");
+        await user.click(addMetricCard);
+
+        // fill in the fields
+        const nameField = screen.getByLabelText("Name");
+        const descriptionField = screen.getByLabelText("Description");
+        const unitField = screen.getByLabelText("Unit");
+
+        await user.type(nameField, "Test Metric");
+        await user.type(descriptionField, "Test Description");
+        await user.type(unitField, "Test Unit");
+
+        // check for buttons
+        const addButton = screen.getByRole("button", { name: /Add/i });
+        await user.click(addButton);
+
+        await waitFor(() => {
+            expect(mockShowNotification).toHaveBeenCalledWith(
+                "error",
+                "Error",
+                "Failed to add metric. The content might be unsafe. Please try again."
+            );
         });
     });
 });

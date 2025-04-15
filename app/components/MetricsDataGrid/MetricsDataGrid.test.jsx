@@ -146,6 +146,59 @@ describe("MetricsDataGrid", () => {
         });
     });
 
+    it("rejected update triggers a content safety notification", async () => {
+        const { user } = setup({ initialRows: mockInitialRows });
+        putMetric.mockResolvedValueOnce({ status: 400, json: () => {} });
+
+        const editButton = getActionsButton("EditIcon", 0);
+        await user.click(editButton);
+
+        const nameInput = screen.getAllByRole("textbox")[0];
+        await user.clear(nameInput);
+        await user.type(nameInput, "Updated Metric 1");
+
+        const saveButton = getActionsButton("SaveIcon", 0);
+        await user.click(saveButton);
+
+        await waitFor(() => {
+            expect(mockShowNotification).toHaveBeenCalledWith(
+                "error",
+                "Error saving metric",
+                "The metric could not be updated. Is your content unsafe?"
+            );
+        });
+    });
+
+    it("rejected add triggers a content safety notification", async () => {
+        const { user } = setup({ initialRows: mockInitialRows });
+        postMetric.mockResolvedValueOnce({ status: 400, json: () => {} });
+
+        const addButton = screen.getByRole("button", { name: /Add Record/i });
+        await user.click(addButton);
+
+        const nameInput = screen.getAllByRole("textbox")[0];
+        await user.type(nameInput, "Metric 1");
+
+        const descriptionInput = screen.getAllByRole("textbox")[1];
+        await user.clear(descriptionInput);
+        await user.type(descriptionInput, "Description 1");
+
+        const unitInput = screen.getAllByRole("textbox")[2];
+        await user.clear(unitInput);
+        await user.type(unitInput, "Unit 1");
+
+        const saveButton = getActionsButton("SaveIcon", 0);
+        await user.click(saveButton);
+
+        await waitFor(() => {
+            expect(mockShowNotification).toHaveBeenCalledWith(
+                "error",
+                "Error saving metric",
+                "The metric could not be created. Is your content unsafe?"
+            );
+        });
+    });
+
     it("shows a notification when a metric is deleted", async () => {
         const { user } = setup({ initialRows: mockInitialRows });
         const deleteButton = getActionsButton("DeleteIcon", 0);
@@ -236,7 +289,7 @@ describe("MetricsDataGrid", () => {
         expect(mockShowNotification).toHaveBeenCalledWith(
             "error",
             "Error saving metric",
-            "The metric could not be created"
+            "The metric could not be created. Is your content unsafe?"
         );
     });
 });
